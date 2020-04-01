@@ -12,3 +12,4 @@ public class AllStayAtHome extends Population{
     }
   }
 }
+//test
