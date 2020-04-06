@@ -43,14 +43,14 @@ public abstract class Person {
 
 	/**
 	*/
-	public Person(int x,int y,Country country) {
+	protected Person(int x,int y,Country country) {
 		this.x=x;
 		this.y=y;
 		this.id = Person.counter++;
 		this.country=country;
 	}
 
-	public Person(){
+	protected Person(){
 		this.x=-1;
 		this.y=-1;
 		this.id = Person.counter++;
