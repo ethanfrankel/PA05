@@ -12,4 +12,3 @@ public class AllStayAtHome extends Population{
     }
   }
 }
-//new test to ignore classpath
