@@ -117,6 +117,8 @@ public abstract class Person {
 		this.age++;
 		if (infected && !this.recovered && (this.age - this.infectionTime > this.recoveryTime)) {
 			this.recovered = true;
+			this.infected = false;
+			this.exposed = false;
 		}
   }
 
