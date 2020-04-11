@@ -1,11 +1,12 @@
 package lesson19;
 public class AnalyzeSimulation{
     //runs will be the number of times it loops (one hundred). 
-    int runs=0;
+    public int runs=0;
     //Assume a tick is one day
-    int totalnumOfDays=100000; 
-    int totalnumOfInfected=0; 
-    int totalpeakInfectedLevel=0;
+    public int totalnumOfDays=100000; 
+    public int totalnumOfInfected=0; 
+    public int totalpeakInfectedLevel=0;
+    
     public AnalyzeSimulation(int runs){
         runs=this.runs;
     }
