@@ -41,28 +41,44 @@ public class RunSimulation {
 		country.population = population;
 		// next we place the people into the country randomly
 		population.placePeople(country);
+		
+		AnalyzeSimulation as = new AnalyzeSimulation(100); //run the simulation 100 times
+		int iterations = 0;
+		
+		while(iterations <= 100) {
+			System.out.println("Initial State of the Country");
+			country.printCountry();
 
-		System.out.println("Initial State of the Country");
-		country.printCountry();
+			System.out.println("\nTracking the Infection");
+			for(int k=0;k<MAX_TICKS; k++) {
+				country.simulateOneStep();
+				country.printState(k);
 
-		System.out.println("\nTracking the Infection");
-		for(int k=0;k<MAX_TICKS; k++) {
-			country.simulateOneStep();
-			country.printState(k);
+				if (country.numInfected==0) {
+					break;
 
-			if (country.numInfected==0) {
-				break;
-
+				}
 			}
+			
+			if(iterations == 100){
+				System.out.println("Average statistics:");
+				data.setinfected(country.getnuminfected());
+				data.getaveragestats();
+			}
+			//print the statistics for each run 
+			else{
+				System.out.println("\nFinal State of the Country");
+				country.printCountry();
+				System.out.println(" ");
+				country.printStats();
+				//set  numOfDays, numOfInfected, peakInfectedLevel
+			}
+			
+			iterations++;
+
 		}
-		System.out.println("\nFinal State of the Country");
-		country.printCountry();
-		System.out.println(" ");
-		country.printStats();
 
 	}
-
-
 
 
 }
