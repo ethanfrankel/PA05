@@ -7,17 +7,17 @@ public class AnalyzeSimulation {
 	int avgPeakInfectedLevel = 0;
 	int avgNumAffected = 0;
 	int avgNumOfDays = 0;
-	
+
 	public AnalyzeSimulation() {
 
 	}
-	
+
 	public void addStats(int peakInfectedLevel, int numAffected, int numOfDays) {
 		this.totalPeakInfectedLevel = this.totalPeakInfectedLevel + peakInfectedLevel;
 		this.totalNumAffected = this.totalNumAffected + numAffected;
 		this.totalNumOfDays = this.totalNumOfDays + numOfDays;
 	}
-	
+
 	public void getAverageStats(int numSimulations) {
 		this.avgPeakInfectedLevel = this.totalPeakInfectedLevel / numSimulations;
 		this.avgNumAffected = this.totalNumAffected / numSimulations;
@@ -28,5 +28,5 @@ public class AnalyzeSimulation {
 		System.out.println("Total Infections: " + this.avgNumAffected);
 		System.out.println("Infected at Peak: " + this.avgPeakInfectedLevel);
 	}
-	
+
 }
