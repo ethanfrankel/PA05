@@ -7,6 +7,9 @@ public class Country {
 	int numInfected=0;
 	int numRecovered=0;
 	int numPeople=0;
+	int numOfDays = 0;
+	int peakInfectedLevel = 0;
+	int numAffected = 0;
 
 	/**
 	 * places is a 2d array representing the places a person could be
@@ -42,7 +45,7 @@ public class Country {
 		System.out.println();
 	}
 
-	public void simulateOneStep(){
+	public void simulateOneStep() {
 		//System.out.println("size= "+population.getSize());
 		//System.out.println(java.util.Arrays.toString(population.people));
 		for(int i=0; i<population.getSize(); i++){
@@ -53,14 +56,13 @@ public class Country {
 		}
 		this.getStats();
 	}
-
+	
 	public void getStats() {
-		// count number of infected and print
-		int count = 0;
-		int numPeople=0;
+		int numInfected = 0;
+		int numPeople = 0;
 		int recovered = 0;
-		// here we iterate through places,
-		// but it would be better to iterate through population
+		int numAffected = 0;
+
 		for(int i=0; i<places.length; i++) {
 			for(int j=0; j<places[i].length; j++) {
 				if (places[i][j] != null) {
@@ -69,14 +71,32 @@ public class Country {
 						recovered++;
 					}
 					else if (places[i][j].infected) {
-						count++;
+						numInfected++;
 					}
 				}
 			}
 		}
-		this.numInfected = count;
+		
+		this.numInfected = numInfected;
 		this.numPeople = numPeople;
 		this.numRecovered = recovered;
+		this.numAffected  = numInfected + recovered;
+		this.numOfDays++;
+		if (this.numInfected > this.peakInfectedLevel) {
+			this.peakInfectedLevel = this.numInfected;
+		}
+	}
+	
+	public int getPeakInfectedLevel() {
+		return this.peakInfectedLevel;
+	}
+	
+	public int getNumAffected() {
+		return this.numAffected;
+	}
+	
+	public int getNumOfDays() {
+		return this.numOfDays;
 	}
 
 	public void printStats() {
